@@ -36,7 +36,17 @@ function allLettersArePresent() {
 }
 
 function replaceChosenLetter(chosenLetter) {
-    randomWord.split("") 
+    if (isLetterPresentInOurWord(chosenLetter)) {
+        var lettersInOurWord = randomWord.split("");
+        // ["s", "o", "f", "i", "a"]
+        // currentGuess
+        // ["_", "o", "_", "_", "_"]
+        // chosenLetter
+        // "f"
+        var index = lettersInOurWord.indexOf(chosenLetter);
+        // 2
+        currentGuess[index] = chosenLetter;
+    }
 }
 
 function win() {
@@ -60,6 +70,7 @@ function writeGameStatus() {
     document.querySelector('#losses').innerHTML = "Losses: " + losses;
     document.querySelector('#guesses-left').innerHTML = "Guesses left: " + numGuesses;
     document.querySelector('#letters-used').innerHTML = "Your missed letters so far: " + letterUsed;
+    document.querySelector('#current-word').innerHTML = currentGuess.join(" ");
 }
 
 var randomWord = "";
@@ -75,7 +86,7 @@ document.onkeyup = function (event) {
     if (isUserInputValid(userGuess)) {
 
         if (isLetterPresentInOurWord(userGuess)) {
-            replaceChosenLetter();
+            replaceChosenLetter(userGuess);
         } else {
             numGuesses--;
             letterUsed.push(userGuess);
