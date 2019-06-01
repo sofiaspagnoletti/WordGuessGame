@@ -1,6 +1,6 @@
 
 
-var allWords = ["sofia", "andrew", "joe", "sveta", "felix", "helan", "monali", "devin"];
+var allWords = ["sofia", "daniel", "cameron", "andrew", "joe", "sveta", "felix", "helan", "monali", "devin"];
 var allLettersOption = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",];
 
 var wins = 0;
@@ -32,19 +32,14 @@ function isLetterPresentInOurWord(chosenLetter) {
 
 function allLettersArePresent() {
     return currentGuess.join("") === randomWord;
-    // return currentGuess.indexOf("_") === -1;
 }
 
 function replaceChosenLetter(chosenLetter) {
     if (isLetterPresentInOurWord(chosenLetter)) {
         var lettersInOurWord = randomWord.split("");
-        // ["s", "o", "f", "i", "a"]
-        // currentGuess
-        // ["_", "o", "_", "_", "_"]
-        // chosenLetter
-        // "f"
+        
         var index = lettersInOurWord.indexOf(chosenLetter);
-        // 2
+       
         currentGuess[index] = chosenLetter;
     }
 }
@@ -92,14 +87,6 @@ document.onkeyup = function (event) {
             letterUsed.push(userGuess);
         }
 
-        // if (userGuess === computerGuess) {
-        //     win();
-        // }
-
-        // if (userGuess != computerGuess) {
-        //     numGuesses--;
-        //     guessChoices.push(userGuess);
-        // }
 
         if (numGuesses === 0) {
             lose();
