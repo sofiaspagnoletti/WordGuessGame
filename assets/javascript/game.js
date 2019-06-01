@@ -31,8 +31,12 @@ function isLetterPresentInOurWord(chosenLetter) {
 }
 
 function allLettersArePresent() {
-    replaceChosenLetter=randomWord;
-    resetGame();
+    return currentGuess.join("") === randomWord;
+    // return currentGuess.indexOf("_") === -1;
+}
+
+function replaceChosenLetter(chosenLetter) {
+    randomWord.split("") 
 }
 
 function win() {
